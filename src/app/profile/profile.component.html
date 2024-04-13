@@ -1,0 +1,66 @@
+<div *ngIf="userDetails" class="flex flex-col md:flex-row items-center mt-6 mb-4 justify-start gap-8">
+  <div class="md:mr-4 animate-fade-right rounded-full shadow-2xl p-2">
+    <img *ngIf="userDetails.avatar_url" class="w-52 h-52 rounded-full shadow-[4.0px_8.0px_4.0px_rgba(0,0,0,0.38)]" [src]="userDetails?.avatar_url" alt="Avatar" />
+  </div>
+  <div class="animate-fade-right" >
+    <div *ngIf="userDetails.name" class="mb-2">
+      <p class="text-2xl font-semibold dark:text-white">{{ userDetails?.name }}</p>
+      <div class="flex gap-4 mb-1 dark:text-slate-100">
+        <fa-icon [icon]="faLink"></fa-icon>
+        <p class="text-zinc-800 dark:text-slate-100"><a [href]="userDetails?.html_url">{{ userDetails?.login }}</a></p>
+      </div>
+      <p>{{ userDetails.email }}</p>
+    </div>
+    <div *ngIf="!userDetails.name" class="mb-2">
+      <p class="text-2xl font-medium dark:text-white"><a [href]="userDetails?.html_url">{{ userDetails?.login }}</a></p>
+      <p>{{ userDetails.email }}</p>
+    </div>
+    <p class="text-slate-800 dark:text-slate-100 text-base">{{ userDetails?.bio }}</p>
+    <div class="flex gap-4 mb-1 dark:text-gray-100">
+      <fa-icon [icon]="faUserGroup"></fa-icon>
+      <p class="font-medium dark:text-slate-100" *ngIf="userDetails.followers">Followers: {{ userDetails?.followers }}</p>
+      <p class="font-medium dark:text-slate-100" *ngIf="userDetails.following">Following: {{ userDetails?.following }}</p>
+    </div>
+    <div *ngIf="userDetails.blog" class="flex gap-4 mb-1 dark:text-slate-100">
+      <fa-icon [icon]="faUpRightFromSquare"></fa-icon>
+      <p ><span class="font-medium dark:text-slate-100">Website: </span><a [href]="userDetails.blog" target="_blank" class="text-green-500">{{ userDetails.blog }}</a></p>
+    </div>
+    <p *ngIf="userDetails.twitter_username"><span class="font-medium dark:text-slate-100">Twitter: </span><a [href]="userDetails.twitter_username" target="_blank" class="text-green-500">{{ userDetails.twitter_username }}</a></p>
+    <div *ngIf="userDetails.location" class="flex gap-4 mb-1 dark:text-slate-100">
+      <fa-icon [icon]="faLocationDot"></fa-icon>
+      <p  class="dark:text-slate-100">{{ userDetails.location }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- 
+<div class="flex flex-col md:flex-row items-center mt-6 mb-4 justify-start gap-8">
+  <div class="md:mr-4 animate-fade-right rounded-full shadow-[4.0px_8.0px_4.0px_rgba(0,0,0,0.38)]">
+      <img
+          class="w-52 h-52 rounded-full "
+          [src]="'https://avatars.githubusercontent.com/u/75321407?v=4'"
+          alt="Avatar"
+      />
+  </div>
+  <div>
+      <div class="mb-2">
+          <p class="text-2xl font-semibold">Sai Kiran</p>
+          <p class="text-slate-800"><a [href]="'/'">sai-1712</a></p>
+          <p>ravirala.sai1712gmail.com</p>
+      </div>
+      <p class="text-gray-800 text-base">Learning</p>
+      <div class="flex gap-4 mb-1">
+          <p class="font-semibold">Followers: 4</p>
+          <p class="font-semibold">Following: 10</p>
+      </div>
+      <p>
+          <span class="font-semibold">Website: </span
+          ><a [href]="'/'" target="_blank" class="text-blue-500">sk.me/f/f</a>
+      </p>
+      <p>
+          <span class="font-semibold">Twitter: </span
+          ><a [href]="'/'" target="_blank" class="text-blue-500">sk1712</a>
+      </p>
+      <p>Noida</p>
+  </div>
+</div> -->

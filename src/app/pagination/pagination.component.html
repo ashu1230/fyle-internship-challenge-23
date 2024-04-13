@@ -1,0 +1,18 @@
+<div *ngIf="totalPages > 0" class="mt-8 flex flex-col">
+  <ul class="flex justify-center space-x-2">
+    <li *ngIf="currentPage > 1">
+      <a (click)="onPageChange('prev')" class="older bg-green-500 text-white px-3 py-2 rounded-md">PREV</a>
+    </li>
+    <ng-container *ngFor="let page of calculateTotalPages(totalPages); let i = index">
+      <li [ngClass]="{'disabled': i + 1 !== currentPage }">
+        <a (click)="onPageChange(i + 1)" class="bg-green-100 hover:bg-green-300 transform duration-100 text-green-500 px-3 py-2 rounded-md">{{ i + 1 }}</a>
+      </li>
+    </ng-container>
+    <li *ngIf="currentPage < totalPages">
+      <a (click)="onPageChange('next')" class="newer bg-green-500 text-white px-3 py-2 rounded-md">NEXT</a>
+    </li>
+  </ul>
+  <div class="flex justify-center mt-4">
+    <span class="text-slate-600 dark:text-slate-100">Showing {{currentPage}} of {{totalPages}} pages</span>
+  </div>
+</div>
